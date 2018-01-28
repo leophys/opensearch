@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 import sys
 from distutils.core import setup
 from setuptools import find_packages
@@ -20,7 +21,7 @@ setup(
     license          = 'http://www.opensource.org/licenses/gpl-license.php',
     packages         = find_packages(exclude=['test']),
     description      = "Interact with opensearch services",
-    classifiers      = filter( None, classifiers.split("\n") ),
+    classifiers      = [_f for _f in classifiers.split("\n") if _f],
     tests_require    = ["nose>=0.10.4"],
     test_suite       = 'nose.collector',
 )

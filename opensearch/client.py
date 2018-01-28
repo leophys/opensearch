@@ -1,6 +1,7 @@
-from description import Description
-from query import Query
-from results import Results
+from __future__ import absolute_import
+from .description import Description
+from .query import Query
+from .results import Results
 
 class Client:
 

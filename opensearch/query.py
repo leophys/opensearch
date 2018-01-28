@@ -1,6 +1,7 @@
+from __future__ import absolute_import
 import re
-import urllib
-import urlparse
+import six.moves.urllib.request, six.moves.urllib.parse, six.moves.urllib.error
+import six.moves.urllib.parse
 
 class Query:
     """Represents an opensearch query. Used internally by the Client to 
@@ -23,8 +24,8 @@ class Query:
         from the opensearch Description.
         """
         self.format = format
-        self.url_parts = urlparse.urlparse(format)
-        qsl = urlparse.parse_qsl(self.url_parts[4])
+        self.url_parts = six.moves.urllib.parse.urlparse(format)
+        qsl = six.moves.urllib.parse.parse_qsl(self.url_parts[4])
         self.params = []
 
         for key, value in qsl:
@@ -42,8 +43,8 @@ class Query:
 
         # create new url using the query string list
         url_parts = list(self.url_parts)
-        url_parts[4] = urllib.urlencode(qsl)
-        return urlparse.urlunparse(tuple(url_parts))
+        url_parts[4] = six.moves.urllib.parse.urlencode(qsl)
+        return six.moves.urllib.parse.urlunparse(tuple(url_parts))
 
     def has_macro(self, macro_name):
         for param in self.params:

@@ -1,6 +1,7 @@
-from urllib2 import urlopen, Request
+from __future__ import absolute_import
+from six.moves.urllib.request import urlopen, Request
 from xml.dom.minidom import parse
-from url import URL
+from .url import URL
 
 class Description:
     """A class for representing OpenSearch Description files.
