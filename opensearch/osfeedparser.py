@@ -2472,7 +2472,7 @@ def opensearch_parse(url_file_stream_or_string, etag=None, modified=None, agent=
     result['entries'] = []
     if _XML_AVAILABLE:
         result['bozo'] = 0
-    if type(handlers) == types.InstanceType:
+    if not isinstance(type(handlers), list):
         handlers = [handlers]
     try:
         f = _open_resource(url_file_stream_or_string, etag, modified, agent, referrer, handlers)
